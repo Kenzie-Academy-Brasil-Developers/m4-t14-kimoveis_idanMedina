@@ -23,7 +23,7 @@ const createScheduleService = async (
     id: payload.realEstateId,
   });
   if (!realEstate) {
-    throw new AppError("Estate not found", 404);
+    throw new AppError("RealEstate not found", 404);
   }
 
   const user: User | null = await userRepository.findOneBy({

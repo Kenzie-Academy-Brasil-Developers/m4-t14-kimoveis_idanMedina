@@ -15,7 +15,7 @@ const checkToken = async (
   const token = req.headers.authorization;
 
   if (!token) {
-    throw new AppError("Missing Bearer Token", 401);
+    throw new AppError("Missing bearer token", 401);
   }
 
   const auth = token.split(" ")[1];

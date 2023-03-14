@@ -43,7 +43,7 @@ const checkIDIfExists = async (
     });
 
     if (!findRealEstate) {
-      throw new AppError("Estate not found", 404);
+      throw new AppError("RealEstate not found", 404);
     }
   }
 
