@@ -29,8 +29,18 @@ const createScheduleService = async (
   const user: User | null = await userRepository.findOneBy({
     id: id,
   });
-  const date: Date | string = new Date(payload.date);
-  const hour: Date | string = new Date(payload.hour);
+
+  const date: Date | string = new Date(`${payload.date},${payload.hour}`);
+  console.log(date.toString());
+  if (date.toString().includes("Sat") || date.toString().includes("Sun")) {
+    throw new AppError("Invalid date, work days are monday to friday", 400);
+  }
+  const hour: number = Number(payload.hour.slice(0, 2));
+  const minute: number = Number(payload.hour.slice(3, 5));
+  if (hour < 8 || hour > 18) {
+    throw new AppError("Invalid hour, available times are 8AM to 18PM", 400);
+  }
+  console.log(hour, minute);
 
   const schedule: Schedule = scheduleRepository.create({
     date: payload.date,
@@ -38,12 +48,10 @@ const createScheduleService = async (
     realEstate: realEstate,
     user: user!,
   });
-  console.log(schedule)
+
   await scheduleRepository.save(schedule);
 
-  const newSchedule = returnScheduleSchema.parse(schedule);
-
-  return newSchedule;
+  return schedule;
 };
 
 export default createScheduleService;

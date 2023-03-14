@@ -26,17 +26,17 @@ export class User {
   @Column({ default: false })
   admin: boolean;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: "date" })
   createdAt: string;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: "date" })
   updatedAt: string;
 
-  @DeleteDateColumn()
+  @DeleteDateColumn({ type: "date" })
   deletedAt: string;
 
   @OneToMany(() => Schedule, (schedule) => schedule.user)
-  schedule: Schedule[];
+  schedules: Schedule[];
 }
 
 export default User;

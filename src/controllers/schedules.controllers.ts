@@ -23,7 +23,7 @@ const readSchedulesController = async (
   const id: number = Number(req.params.id);
   const scheduleList = await listScheduleService(id);
 
-  return /* res.status(200).json(scheduleList) */;
+  return;
 };
 
 export { createScheduleController, readSchedulesController };

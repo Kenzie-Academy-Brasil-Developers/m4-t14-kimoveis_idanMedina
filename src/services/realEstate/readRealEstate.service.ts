@@ -12,8 +12,6 @@ const listRealEstateService = async (): Promise<ListRealEstate> => {
     },
   });
 
-  /* const readRealEstate = readRealEstateSchema.parse(findRealEstate); */
-
   return findRealEstate;
 };
 

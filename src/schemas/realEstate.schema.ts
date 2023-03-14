@@ -3,8 +3,8 @@ import { addressSchema, createAddressSchema } from "./addresses.schema";
 import { returnCategorySchema } from "./categories.schema";
 
 const realEstateSchema = z.object({
-  value: z.number().max(12).or(z.string().max(12)),
-  size: z.number(),
+  value: z.number().or(z.string().max(12)),
+  size: z.number().positive(),
   address: addressSchema,
   categoryId: z.number().int(),
 });

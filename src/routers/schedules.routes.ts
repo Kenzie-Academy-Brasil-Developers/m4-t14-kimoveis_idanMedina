@@ -12,9 +12,9 @@ const scheduleRoutes: Router = Router();
 
 scheduleRoutes.post(
   "",
-  checkBodyRequest(scheduleSchema),
   checkToken,
   checkAdminStatus,
+  checkBodyRequest(scheduleSchema),
   createScheduleController
 );
 scheduleRoutes.get(

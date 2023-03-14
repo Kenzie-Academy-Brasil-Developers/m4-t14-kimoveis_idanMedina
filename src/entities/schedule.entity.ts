@@ -8,15 +8,15 @@ export class Schedule {
   id: number;
 
   @Column({ type: "date" })
-  date: string | Date;
+  date: string;
 
-  @Column({ type: "date" })
-  hour: string | Date;
+  @Column({ type: "time" })
+  hour: string;
 
-  @ManyToOne(() => RealEstate, (estate) => estate.schedule)
+  @ManyToOne(() => RealEstate, (estate) => estate.schedules)
   realEstate: RealEstate;
 
-  @ManyToOne(() => User, (user) => user.schedule)
+  @ManyToOne(() => User, (user) => user.schedules)
   user: User;
 }
 

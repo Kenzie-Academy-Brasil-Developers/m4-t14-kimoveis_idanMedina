@@ -13,7 +13,6 @@ import { returnRealEstateSchema } from "../../schemas/realEstate.schema";
 const createRealEstateService = async (
   payload: iRealEstateRequest
 ): Promise<iRealEstateResponse> => {
-
   const realEstateRepository: Repository<RealEstate> =
     AppDataSource.getRepository(RealEstate);
   const addressRepository: Repository<Address> =
@@ -57,11 +56,9 @@ const createRealEstateService = async (
     category: category,
   });
 
-  const newRealEstate = await realEstateRepository.save(realEstate);
+  await realEstateRepository.save(realEstate);
 
-  /* const newRealEstate = returnRealEstateSchema.parse(realEstate); */
-
-  return newRealEstate;
+  return realEstate;
 };
 
 export default createRealEstateService;

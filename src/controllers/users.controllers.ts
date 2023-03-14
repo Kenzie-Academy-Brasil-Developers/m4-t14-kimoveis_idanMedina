@@ -1,15 +1,11 @@
 import { Request, Response } from "express";
-import {
-  iUserRequest,
-  UpdateUser,
-} from "../interfaces/users.interfaces";
+import { iUserRequest, UpdateUser } from "../interfaces/users.interfaces";
 import {
   createUserService,
   listUsersService,
   updateUserService,
-  deleteUserService
+  deleteUserService,
 } from "../services";
-
 
 const createUserController = async (
   req: Request,
@@ -39,9 +35,8 @@ const updateUserController = async (
 
   const updateUser = await updateUserService(data, id);
 
-  return res.status(201).json(updateUser);
+  return res.status(200).json(updateUser);
 };
-
 
 const deleteUserController = async (
   req: Request,

@@ -8,15 +8,14 @@ const listRealEstateCategoryService = async (
 ): Promise<ListRealEstateCategory> => {
   const realEstateRepository = AppDataSource.getRepository(RealEstate);
   const findCategories = await realEstateRepository.find({
-    relations: { category: true, address: true, schedule: true },
+    relations: { category: true, address: true, schedules: true },
     where: {
       category: {
         id: id,
       },
     },
   });
-  /* const readRealEstateCategories =
-    readRealEstateCategorySchema.parse(findCategories); */
+
   return findCategories;
 };
 

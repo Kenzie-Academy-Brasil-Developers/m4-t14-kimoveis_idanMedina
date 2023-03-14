@@ -28,8 +28,8 @@ userRoutes.patch(
 userRoutes.delete(
   "/:id",
   checkToken,
-  checkAdminStatus,
   checkIDIfExists,
+  checkAdminStatus,
   deleteUserController
 );
 

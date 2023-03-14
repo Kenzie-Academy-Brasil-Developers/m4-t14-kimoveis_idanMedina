@@ -1,3 +1,4 @@
+import { type } from "os";
 import {
   Column,
   CreateDateColumn,
@@ -32,16 +33,16 @@ export class RealEstate {
   category: Category;
 
   @OneToMany(() => Schedule, (schedule) => schedule.realEstate)
-  schedule: Schedule[];
+  schedules: Schedule[];
 
   @Column({ default: false })
   sold: boolean;
 
-  @CreateDateColumn()
-  createdAt: string | Date;
+  @CreateDateColumn({ type: "date" })
+  createdAt: string;
 
-  @UpdateDateColumn()
-  updatedAt: string | Date;
+  @UpdateDateColumn({ type: "date" })
+  updatedAt: string;
 }
 
 export default RealEstate;

@@ -17,7 +17,7 @@ const checkIfAuthId = async (
       id: userId,
     },
   });
-  
+
   if (userId !== id) {
     if (!findAdmin[0].admin) {
       throw new AppError("Insufficient permission", 403);

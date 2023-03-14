@@ -9,32 +9,32 @@ import { AppDataSource } from "../../data-source";
 import { Request } from "express";
 
 const createLoginService = async (data: iLoginRequest): Promise<string> => {
-  const userRepository: Repository<User> = AppDataSource.getRepository(User)
+  const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
   const user: User | null = await userRepository.findOneBy({
-    email: data.email
-})
+    email: data.email,
+  });
 
-if(!user){
-    throw new AppError('Invalid credentials', 401)
-}
+  if (!user) {
+    throw new AppError("Invalid credentials", 401);
+  }
 
-const passwordMatch = await compare(data.password, user.password)
+  const passwordMatch = await compare(data.password, user.password);
 
-if(!passwordMatch){
-    throw new AppError('Invalid credentials', 401)
-}
+  if (!passwordMatch) {
+    throw new AppError("Invalid credentials", 401);
+  }
 
-const token: string = jwt.sign(
+  const token: string = jwt.sign(
     {
-        email: user.email
+      email: user.email,
     },
     process.env.SECRET_KEY!,
     {
-        expiresIn: "24h",
-        subject: String(user.id)
+      expiresIn: "24h",
+      subject: String(user.id),
     }
-)
+  );
 
   return token;
 };

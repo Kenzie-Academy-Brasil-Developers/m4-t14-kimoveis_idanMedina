@@ -3,8 +3,8 @@ import { returnRealEstateSchema } from "./realEstate.schema";
 import { returnUserSchema } from "./users.schemas";
 
 const scheduleSchema = z.object({
-  date: z.date().or(z.string()),
-  hour: z.date().or(z.string()),
+  date: z.string(),
+  hour: z.string(),
   realEstateId: z.number().int(),
 });
 

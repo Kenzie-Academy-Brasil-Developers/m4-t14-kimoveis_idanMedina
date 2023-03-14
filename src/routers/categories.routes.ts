@@ -16,8 +16,8 @@ const categoriesRoutes: Router = Router();
 
 categoriesRoutes.post(
   "",
-  checkBodyRequest(categorySchema),
   checkToken,
+  checkBodyRequest(categorySchema),
   checkAdminStatus,
   createCategoryController
 );
